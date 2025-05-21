@@ -56,10 +56,8 @@ export class LinkedList<T> {
 
     // Otherwise, find the last node and update its next pointer
     let current = this.head;
-    let previous = null;
 
     while (current.next) {
-      previous = current;
       current = current.next;
     }
 

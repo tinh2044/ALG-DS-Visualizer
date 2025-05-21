@@ -1,5 +1,5 @@
 import { initialLinkedListItems } from '@/configs/linkedList';
-import { LinkedListNode, LinkedListAppState } from '@/types/linkedList/linkedList';
+import { LinkedListNode, LinkedListAppState } from '@/types/linkedList';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
@@ -144,10 +144,10 @@ export const linkedListSlice = createSlice({
     },
     searchNode: (state, action: PayloadAction<string | number>) => {
       const value = action.payload;
-      const position = state.nodes.findIndex(node => node.value === value);
+      const position = state.nodes.findIndex((node: LinkedListNode) => node.value === value);
       
         if (position !== -1) {
-          state.nodes = state.nodes.map((node, i) => ({
+          state.nodes = state.nodes.map((node: LinkedListNode, i: number) => ({
             ...node,
             highlighted: i === position,
           }));
@@ -187,13 +187,7 @@ export const linkedListSlice = createSlice({
         };
       }
     },
-    traverseNodes: (state) => {
-        // Just mark that we traversed the list
-        state.lastOperation = {
-          type: 'traverse',
-          result: state.nodes.map(node => node.value),
-        };
-    },
+    
     reverseNodes: (state) => {
       if (state.nodes.length > 0) {
         state.nodes = [...state.nodes].reverse();
@@ -209,7 +203,7 @@ export const linkedListSlice = createSlice({
       }
     },
     resetHighlight: (state) => {
-      state.nodes = state.nodes.map(node => ({
+      state.nodes = state.nodes.map((node: LinkedListNode) => ({
         ...node,
         highlighted: false
       }));
@@ -245,7 +239,6 @@ export const {
   deleteAtNode,
   searchNode,
   updateNode,
-  traverseNodes,
   reverseNodes,
   resetHighlight,
   setInputValue,

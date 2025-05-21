@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
 import { Slider, Button, Tooltip } from '@heroui/react';
-import { FaPlay, FaPause, FaUndo, FaRocket } from 'react-icons/fa';
+import { FaPlay, FaPause, FaUndo } from 'react-icons/fa';
 
 const Execution = () => {
   const dispatch = useAppDispatch();

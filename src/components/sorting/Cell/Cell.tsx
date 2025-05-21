@@ -8,19 +8,6 @@ const Cell = ({
   isHighlighted = false,
   isPivot = false,
 }: CellProps) => {
-  let cellClass = '';
-
-  if (isPivot) {
-    cellClass = 'pivot';
-  }
-
-  if (isSorted) {
-    cellClass = 'sort';
-  }
-
-  if (isHighlighted) {
-    cellClass = 'highlight';
-  }
 
   return (
     <li

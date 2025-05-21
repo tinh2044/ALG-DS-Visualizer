@@ -1,4 +1,4 @@
-import { AVLNode, AVLOperation, AVLOperationType, RotationType } from '@/types/avlTree';
+import { AVLNode, AVLOperation, AVLOperationType } from '@/types/avlTree';
 import { AVL_TREE_CONFIG } from '@/configs/avlTree';
 import { AVLTree } from '@/algorithms/ds/avlTree';
 

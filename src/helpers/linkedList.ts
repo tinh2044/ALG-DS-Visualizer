@@ -40,7 +40,6 @@ export class LinkedListVisualizer<T> {
   }
 
   async insertHead(element: T): Promise<void> {
-    const operation = this.linkedList.insertHead(element);
     if (this.callbacks.onInsertHead) {
       this.callbacks.onInsertHead(element);
     }
@@ -51,7 +50,6 @@ export class LinkedListVisualizer<T> {
   }
 
   async insertTail(element: T): Promise<void> {
-    const operation = this.linkedList.insertTail(element);
     if (this.callbacks.onInsertTail) {
       this.callbacks.onInsertTail(element);
     }
@@ -62,7 +60,6 @@ export class LinkedListVisualizer<T> {
   }
 
   async insertAt(element: T, position: number): Promise<void> {
-    const operation = this.linkedList.insertAt(element, position);
     if (this.callbacks.onInsertAt) {
       this.callbacks.onInsertAt(element, position);
     }
@@ -147,7 +144,6 @@ export class LinkedListVisualizer<T> {
   }
 
   async reverse(): Promise<void> {
-    const operation = this.linkedList.reverse();
     if (this.callbacks.onReverse) {
       this.callbacks.onReverse();
     }

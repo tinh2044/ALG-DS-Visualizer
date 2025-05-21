@@ -19,20 +19,6 @@ import bstSliceReducer from "./bstSlice"
 import avlTreeSliceReducer from "./avlTreeSlice"
 import storage from 'redux-persist/lib/storage';
 
-// Configuration to exclude specific paths from persistence for RBT
-// This prevents circular reference errors with the tree structure
-const rbtPersistConfig = {
-  key: 'rbt',
-  storage,
-  blacklist: [
-    'tree', 
-    'operations', 
-    'buildSteps',
-    'operationSnapshots',
-    'error'  // Also exclude error messages from persistence
-  ],
-  debug: false  // Disable debug logs for cleaner console
-};
 
 const avlPersistConfig = {
   key: 'avl',

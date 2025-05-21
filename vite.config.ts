@@ -8,14 +8,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@sortViz': path.resolve(__dirname, './src/apps/sorting-visualizer'),
-      '@pathFinder': path.resolve(__dirname, './src/apps/path-finder'),
     },
   },
   base: '/',
   build: {
     outDir: 'dist',
-    
-    
+    minify: true,
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'ESLINT_ERROR') return;
+        warn(warning);
+      }
+    }
   },
 });
