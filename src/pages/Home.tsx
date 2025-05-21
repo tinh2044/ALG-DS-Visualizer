@@ -1,5 +1,4 @@
-import Navbar from "@/components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function Home() {
@@ -13,27 +12,19 @@ function Home() {
     {
       title: "Path Finding Algorithms",
       description: "Explore algorithms like BFS, DFS, A* Search and Greedy Best-First Search to find paths in a grid.",
-      path: "/pathfinding",
+      path: "/path-finding",
       icon: "🧭"
     },
     {
       title: "Data Structures",
       description: "Interactive visualizations of common data structures like Stack, Queue, Linked List, and Binary Trees.",
-      path: "/datastructures",
+      path: "/data-structures",
       icon: "🏗️"
     },
-    {
-      title: "Maze Generation",
-      description: "Watch as different algorithms generate perfect mazes using techniques like Prim's, Kruskal's, and Recursive Backtracking.",
-      path: "/pathfinding",
-      icon: "🧩"
-    }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <Navbar />
-      <div className="container mx-auto px-4 py-10">
+      <div className="">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +68,7 @@ function Home() {
             </motion.div>
           ))}
         </div>
-      </div>
+      <Outlet />
     </div>
   );
 }

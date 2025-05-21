@@ -18,6 +18,7 @@ import SortingAlg from './pages/sorting/SortingAlg';
 // import PathFindingAlg from './pages/pathfinding';
 
 import Home from '@/pages/Home';
+import HomePage from './pages/HomePage';
 
 const sortingRoutes = [
   {
@@ -99,8 +100,12 @@ export const router = createBrowserRouter([
   // ...dataStructuresRoutes,
   {
     path: '/',
-    element: <Home />,
+    element: <HomePage />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       ...sortingRoutes,
       ...dataStructuresRoutes,
       ...pathFindingRoutes
