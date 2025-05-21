@@ -35,6 +35,7 @@ export class BinarySearchTree {
     let current = this.root;
     const path: BSTNode[] = [current];
 
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       operations.push({
         type: 'COMPARE',
@@ -127,9 +128,6 @@ export class BinarySearchTree {
   // Delete a node
   delete(value: number): BSTOperation[] {
     const operations: BSTOperation[] = [];
-    // Capture original state before deletion
-    const originalRoot = this.getRoot();
-    
     // Call the actual delete function
     this.root = this.deleteNode(this.root, value, operations);
     return operations;

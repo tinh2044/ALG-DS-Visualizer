@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { nextOperation, stopAnimation } from '@/redux/avlTreeSlice';
 import { AVL_TREE_CONFIG } from '@/configs/avlTree';
@@ -76,7 +76,6 @@ const AVLTreeVisualizer: React.FC = () => {
     return () => clearTimeout(animationTimer);
   }, [isAnimating, currentOperation, operations, dispatch, speed]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderCustomNode = ({ nodeDatum }: any) => {
     let nodeColor = AVL_TREE_CONFIG.node.colors.default;
     let stroke = AVL_TREE_CONFIG.node.stroke;
