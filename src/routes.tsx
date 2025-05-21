@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { algConfigs } from '@/configs/pathFinding';
 import { PathFindingAlgPage, PathFindingPage } from './pages/pathFinding';
 
@@ -11,7 +11,6 @@ import {
   AVLTreePage,
 } from '@/pages/datastructures';
 
-
 import AllSortingAlgPage from './pages/sorting/AllSortingAlgPage';
 import SortingAlg from './pages/sorting/SortingAlg';
 // import SortingPage from './pages/sorting/SortingAlg';
@@ -20,95 +19,38 @@ import SortingAlg from './pages/sorting/SortingAlg';
 import Home from '@/pages/Home';
 import HomePage from './pages/HomePage';
 
-const sortingRoutes = [
-  {
-    path: '/sorting',
-    element: <AllSortingAlgPage />,
-  },
-  {
-    path: '/sorting/:algName',
-    element: <SortingAlg />,
-  },
-];
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />}>
+        {/* Home route */}
+        <Route index element={<Home />} />
+        
+        {/* Sorting routes */}
+        <Route path="/sorting" element={<AllSortingAlgPage />} />
+        <Route path="/sorting/:algName" element={<SortingAlg />} />
+        
+        {/* Path Finding routes */}
+        <Route path="/path-finding">
+          <Route index element={<PathFindingPage />} />
+          <Route path="a-star" element={<PathFindingAlgPage config={algConfigs[0]} />} />
+          <Route path="bfs" element={<PathFindingAlgPage config={algConfigs[1]} />} />
+          <Route path="dfs" element={<PathFindingAlgPage config={algConfigs[2]} />} />
+          <Route path="greedy" element={<PathFindingAlgPage config={algConfigs[3]} />} />
+        </Route>
+        
+        {/* Data Structures routes */}
+        <Route path="/data-structures">
+          <Route index element={<DataStructuresPage />} />
+          <Route path="stack" element={<StackPage />} />
+          <Route path="queue" element={<QueuePage />} />
+          <Route path="linked-list" element={<LinkedListPage />} />
+          <Route path="bst" element={<BSTPage />} />
+          <Route path="avl-tree" element={<AVLTreePage />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
+};
 
-const pathFindingRoutes = [
-  {
-    path: '/path-finding',
-    element:null,
-    children: [
-      {
-        index: true,
-        element: <PathFindingPage />,
-      },
-      {
-        path: 'a-star',
-        element: <PathFindingAlgPage config={algConfigs[0]} />,
-      },
-      {
-        path: 'bfs',
-        element: <PathFindingAlgPage config={algConfigs[1]} />,
-      },
-      {
-        path: 'dfs',
-        element: <PathFindingAlgPage config={algConfigs[2]} />,
-      },
-      {
-        path: 'greedy',
-        element: <PathFindingAlgPage config={algConfigs[3]} />,
-      },
-    ],
-  }
-];
-
-const dataStructuresRoutes = [
-  {
-    path: '/data-structures',
-    element: null,
-    children: [
-      {
-        index: true,
-        element: <DataStructuresPage />,
-      },
-      {
-        path: 'stack',
-        element: <StackPage />,
-      },
-      {
-        path: 'queue',
-        element: <QueuePage />,
-      },
-      {
-        path: 'linked-list',
-        element: <LinkedListPage />,
-      },
-      {
-        path: 'bst',
-        element: <BSTPage />,
-      },
-      {
-        path: 'avl-tree',
-        element: <AVLTreePage />,
-      },
-      
-    ],
-  }
-];
-
-export const router = createBrowserRouter([
-  
-  // ...sortingRoutes,
-  // ...dataStructuresRoutes,
-  {
-    path: '/',
-    element: <HomePage />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      ...sortingRoutes,
-      ...dataStructuresRoutes,
-      ...pathFindingRoutes
-    ]
-  },
-]);
+export default AppRoutes;
